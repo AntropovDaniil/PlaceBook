@@ -4,4 +4,6 @@
 
     <string name="bookmark_image">Bookmark image</string>
 
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
 </resources>

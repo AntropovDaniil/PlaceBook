@@ -21,6 +21,7 @@ class BookmarkRepository(context: Context) {
         return Bookmark()
     }
 
+
     fun getLiveBookmark(bookmarkId: Long): LiveData<Bookmark> {
         val bookmark = bookmarkDao.loadLiveBookmark(bookmarkId)
         return bookmark
@@ -33,6 +34,8 @@ class BookmarkRepository(context: Context) {
     fun getBookmark(bookmarkId: Long): Bookmark{
         return bookmarkDao.loadBookmark(bookmarkId)
     }
+
+
 
     val allBookmark: LiveData<List<Bookmark>>
         get() {

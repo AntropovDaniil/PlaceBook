@@ -32,6 +32,13 @@ class BookmarkDetailsViewModel(application: Application): AndroidViewModel(appli
             }
             return null
         }
+
+        fun setImage(context: Context, image: Bitmap){
+            id?.let{
+                ImageUtils.saveBitmapToFile(context, image, Bookmark.generateImageFilename(it))
+            }
+        }
+
     }
 
     private fun bookmarkToBookmarkView(bookmark: Bookmark): BookmarkDetailsView {
@@ -43,6 +50,7 @@ class BookmarkDetailsViewModel(application: Application): AndroidViewModel(appli
                 bookmark.notes
         )
     }
+
 
     private fun mapBookmarkToBookmarkView(bookmarkId: Long){
         val bookmark = bookmarkRepo.getLiveBookmark(bookmarkId)
@@ -82,4 +90,6 @@ class BookmarkDetailsViewModel(application: Application): AndroidViewModel(appli
             }
         }
     }
+
+
 }

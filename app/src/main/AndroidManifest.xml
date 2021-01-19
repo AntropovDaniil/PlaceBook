@@ -8,6 +8,7 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -17,6 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlaceBook">
 
+        <provider
+            android:authorities="com.example.placebook.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -31,7 +41,8 @@
 
         <activity
             android:name=".ui.MapsActivity"
-            android:label="@string/title_activity_maps">
+            android:label="@string/title_activity_maps"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,11 +50,14 @@
             </intent-filter>
         </activity>
 
+
+
         <activity android:name=".ui.BookmarkDetailsActivity"
             android:label="Bookmark"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden">
         </activity>
+
 
     </application>
 
