@@ -1,7 +1,6 @@
 package com.example.placebook.adapter
 
 import android.app.Activity
-import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -36,8 +35,8 @@ class BookmarkInfoWindowAdapter(val context: Activity): GoogleMap.InfoWindowAdap
             is MapsActivity.PlaceInfo -> {
                 imageView.setImageBitmap((marker.tag as MapsActivity.PlaceInfo).image)
             }
-            is MapsViewModel.BookmarkMarkerView -> {
-                var bookMarkView = marker.tag as MapsViewModel.BookmarkMarkerView
+            is MapsViewModel.BookmarkView -> {
+                var bookMarkView = marker.tag as MapsViewModel.BookmarkView
 
                 imageView.setImageBitmap(bookMarkView.getImage(context))
             }

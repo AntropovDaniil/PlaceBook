@@ -44,69 +44,81 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="3">
 
                 <TextView
                     android:id="@+id/textViewName"
                     style="@style/BookmarkLabel"
-                    android:text="Name"/>
+                    android:text="Name"
+                    android:layout_weight="1"/>
 
                 <EditText
                     android:id="@+id/editTextName"
                     style="@style/BookmarkEditText"
                     android:hint="Name"
-                    android:inputType="text"/>
+                    android:inputType="text"
+                    android:layout_weight="2"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="3">
 
                 <TextView
                     android:id="@+id/textViewNotes"
                     style="@style/BookmarkLabel"
-                    android:text="Notes"/>
+                    android:text="Notes"
+                    android:layout_weight="1"/>
 
                 <EditText
                     android:id="@+id/editTextNotes"
                     style="@style/BookmarkEditText"
                     android:hint="Enter notes"
-                    android:inputType="textMultiLine"/>
+                    android:inputType="textMultiLine"
+                    android:layout_weight="2"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="3">
 
                 <TextView
                     android:id="@+id/textViewPhone"
                     style="@style/BookmarkLabel"
-                    android:text="Phone"/>
+                    android:text="Phone"
+                    android:layout_weight="1"/>
 
                 <EditText
                     android:id="@+id/editTextPhone"
                     style="@style/BookmarkEditText"
                     android:hint="Phone number"
-                    android:inputType="phone"/>
+                    android:inputType="phone"
+                    android:layout_weight="2"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_weight="3">
 
                 <TextView
                     android:id="@+id/textViewAddress"
                     style="@style/BookmarkLabel"
-                    android:text="Address"/>
+                    android:text="Address"
+                    android:layout_weight="1"/>
 
                 <EditText
                     android:id="@+id/editTextAddress"
                     style="@style/BookmarkEditText"
                     android:hint="Address"
-                    android:inputType="textMultiLine"/>
+                    android:inputType="textMultiLine"
+                    android:layout_weight="2"/>
             </LinearLayout>
 
         </LinearLayout>
