@@ -30,6 +30,7 @@ class MapsViewModel(application: Application): AndroidViewModel(application) {
         bookmark.latitude = place.latLng?.latitude ?: 0.0
         bookmark.phone = place.phoneNumber.toString()
         bookmark.address = place.address.toString()
+        bookmark.category = getPlaceCategory(place)
 
         val newId = bookmarkRepository.addBookmark(bookmark)
 
@@ -44,7 +45,8 @@ class MapsViewModel(application: Application): AndroidViewModel(application) {
         return MapsViewModel.BookmarkView(bookmark.id,
                 LatLng(bookmark.latitude, bookmark.longitude),
                 bookmark.name,
-                bookmark.phone)
+                bookmark.phone,
+                bookmarkRepository.getCategoryResourceId(bookmark.category))
     }
 
     private fun mapBookmarksToBookmarkView(){
@@ -56,6 +58,19 @@ class MapsViewModel(application: Application): AndroidViewModel(application) {
         }
     }
 
+    private fun getPlaceCategory(place: Place): String{
+        var category = "Other"
+        val placeTypes = place.types
+
+        placeTypes?.let { placeTypes ->
+            if (placeTypes.size > 0){
+                val placeType = placeTypes[0]
+                category = bookmarkRepository.placeTypeToCategory(placeType)
+            }
+        }
+        return category
+    }
+
     fun getBookmarkViews(): LiveData<List<BookmarkView>>? {
         if (bookmarks == null){
             mapBookmarksToBookmarkView()
@@ -63,11 +78,21 @@ class MapsViewModel(application: Application): AndroidViewModel(application) {
         return bookmarks
     }
 
+    fun addBookmark(latLng: LatLng): Long?{
+        val bookmark = bookmarkRepository.createBookmark()
+        bookmark.name = "Untitled"
+        bookmark.longitude = latLng.longitude
+        bookmark.latitude = latLng.latitude
+        bookmark.category = "Other"
+        return bookmarkRepository.addBookmark(bookmark)
+    }
+
     data class BookmarkView(
-        var id: Long? = null,
-        var location: LatLng = LatLng(0.0, 0.0),
-        var name: String = "",
-        var phone: String = ""
+        val id: Long? = null,
+        val location: LatLng = LatLng(0.0, 0.0),
+        val name: String = "",
+        val phone: String = "",
+        val categoryResourceId: Int? = null
     ){
 
         fun getImage(context: Context): Bitmap? {
